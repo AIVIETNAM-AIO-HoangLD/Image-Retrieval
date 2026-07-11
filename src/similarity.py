@@ -15,6 +15,6 @@ class Similarity:
         for pic in self.data:
             score = self.abosolute_difference(pic)
             scores.append(score)
-        normalized_scores = (scores - np.min(scores)) / (np.max(scores) - np.min(scores))
-        return normalized_scores
+        #normalized_scores = (scores - np.min(scores)) / (np.max(scores) - np.min(scores))
+        return scores
 
