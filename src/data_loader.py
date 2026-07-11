@@ -23,6 +23,7 @@ class DataLoader:
             for pic in os.listdir(path):
                 self.image_np[i] = self.read_images_from_path(self.size, str(path + '/' + pic))
                 self.image_path.append(str(path + '/' + pic))
+                print(str(path + '/' + pic))
                 break
         self.image_paths = np.array(self.image_path)
         return self.image_np, self.image_paths
