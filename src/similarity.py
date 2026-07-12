@@ -27,5 +27,8 @@ class Similarity:
             scores.append(score)
         return scores
 
-
+    def cosine_similarity(self, pic):
+        query_norm = np.sqrt(np.sum(self.query)**2)
+        data_norm = np.sqrt(np.sum(pic)**2)
+        return np.sum(pic * self.query)
 

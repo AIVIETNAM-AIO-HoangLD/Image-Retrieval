@@ -1,8 +1,11 @@
 import numpy as np
-from data_loader import DataLoader
-from similarity import Similarity
+import os
 from PIL import Image
 import cv2
+
+from src.data_loader import DataLoader
+from src.similarity import Similarity
+
 data_path = r"./data/Dataset/animal/"
 data_loader = DataLoader(data_path, size=(448, 448))
 
