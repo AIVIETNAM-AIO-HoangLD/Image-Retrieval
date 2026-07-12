@@ -9,7 +9,7 @@ class Similarity:
     def abosolute_difference(self, pic):
         return np.sum(np.abs(pic.astype(np.int32) - self.query.astype(np.int32)))
     
-    def get_f1_score(self):
+    def get_L1_score(self):
         scores = []
         for pic in self.data:
             score = self.abosolute_difference(pic)
@@ -20,7 +20,7 @@ class Similarity:
     def mean_square_differences(self, pic):
         return np.sqrt(np.sum((pic - self.query)**2))
     
-    def get_l2_score(self):
+    def get_L2_score(self):
         scores = []
         for pic in self.data:
             score = self.mean_square_differences(pic)
