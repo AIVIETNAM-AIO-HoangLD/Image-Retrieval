@@ -1,7 +1,5 @@
 import numpy as np
-
 class Similarity:
-
     def __init__(self, data, query):
         self.query = query
         self.data = data
@@ -28,8 +26,8 @@ class Similarity:
         return scores
 
     def cosine_similarity(self, pic):
-        query_norm = np.sqrt(np.sum(self.query)**2)
-        data_norm = np.sqrt(np.sum(pic)**2)
+        query_norm = np.sqrt(np.sum(self.query**2))
+        data_norm = np.sqrt(np.sum(pic**2))
         return np.sum(pic * self.query) / (query_norm * data_norm)
     
     def get_cosine_similarity(self):
@@ -42,8 +40,8 @@ class Similarity:
     def correlation_coefficient(self, pic):
         query_mean = self.query - np.mean(self.query)
         data_mean = pic - np.mean(pic)
-        query_norm = np.sqrt(np.sum(self.query)**2)
-        data_norm = np.sqrt(np.sum(pic)**2)
+        query_norm = np.sqrt(np.sum(self.query**2))
+        data_norm = np.sqrt(np.sum(pic**2))
         return np.sum(data_mean * query_mean) / (query_norm * data_norm)
     
     def get_correlation_coefficient(self):

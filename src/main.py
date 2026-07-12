@@ -8,16 +8,16 @@ from src.similarity import Similarity
 
 data_path = r"./data/Dataset/animal/"
 data_loader = DataLoader(data_path, size=(448, 448))
-
+QUERY = np.array(Image.open(r"/home/hoangLD/Desktop/AIVIETNAM/Module-02/M02W01/Image_Retrieval/data/Dataset/animal/bear/6951618736_88e63789f2_b.jpg").convert("RGB").resize((448, 448)))
+imgs_vec = data_loader.embedding_images()
 img_np,_ = data_loader.folder_to_images()
-QUERY = np.array(Image.open(r"/home/hoangLD/Desktop/AIVIETNAM/Module-02/M02W01/Image_Retrieval/data/Dataset/animal/Spider/6208284939_e31f22f9d9_b.jpg").convert("RGB").resize((448, 448)))
-retrieval = Similarity(img_np, QUERY)
+query_vec = data_loader.embedding_images(pic=QUERY)
 
-result= retrieval.get_correlation_coefficient()
+retrieval = Similarity(imgs_vec, query_vec)
+result= retrieval.get_cosine_similarity()
 result_min_idx = np.argsort(result)[-1]
-
+#
 predict = img_np[result_min_idx].astype(np.uint8)
-print(predict.shape)
 print(result)
 print(result[result_min_idx])
 cv2.imshow("",predict)
