@@ -8,9 +8,8 @@ from chromadb.utils.embedding_functions import OpenCLIPEmbeddingFunction
 class DataLoader:
     def __init__(self, data_dir: str, size: tuple):
         self.data_dir = data_dir
-        self.image_paths =[]
         self.size = size
-        self.image_np = None
+
 
     
     def read_images_from_path(self, size: tuple, path_img: str):
@@ -19,7 +18,9 @@ class DataLoader:
         return np.array(img)
     
     def folder_to_images(self):
+        self.image_paths =[]
         self.image_path = []
+        self.image_np = None
         self.list_dir = [self.data_dir + name for name in os.listdir(self.data_dir)]
         self.image_np = np.zeros(shape=(len(self.list_dir), *self.size, 3), dtype=np.uint8)
         for i, path in enumerate(self.list_dir):
