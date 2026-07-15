@@ -50,24 +50,19 @@ class Similarity:
             return self.cosine_similarity(self.data)
     
     def correlation_coefficient(self, pic):
-        axis_batch_size = tuple(range(1, len(pic.shape)))
         query_mean = self.query - np.mean(self.query)
         data_mean = pic - np.mean(pic)
         query_norm = np.sqrt(np.sum(self.query**2))
         data_norm = np.sqrt(np.sum(pic**2))
-        if self.query.ndim != 1:
-            return np.sum(data_mean * query_mean, axis=axis_batch_size) / (query_norm * data_norm)
-        else: return np.sum(data_mean * query_mean) / (query_norm * data_norm)
+        return np.sum(data_mean * query_mean) / (query_norm * data_norm)
     
     def get_correlation_coefficient(self):
-        if self.query != 1:
-            scores = []
-            for pic in self.data:
-                score = self.correlation_coefficient(pic)
-                scores.append(score)
-            return scores
-        else: return self.correlation_coefficient(self.data)
-        
+        scores = []
+        for pic in self.data:
+            score = self.correlation_coefficient(pic)
+            scores.append(score)
+        return scores
+
 
 
     
