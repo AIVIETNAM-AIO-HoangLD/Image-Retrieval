@@ -1,7 +1,7 @@
 # Image-Retrieval
 Dataset: https://drive.google.com/file/d/1wVZjSByJxyhgIZGyqwabyUobuafQU5kP/view
 
-In similarity, we implemented some difference-calculation method:
+In similarity, we implemented some difference-calculation methods:
 
 To call these method:
 
